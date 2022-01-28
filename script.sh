@@ -31,8 +31,10 @@ done
 
 wait
 
-grep -rnw ./results_50M/ -e 'L1I LOAD' | awk '{print $1",", $4",", $8}' > results_50M/out.csv
-sort -k1 -n -t, results_50M/out.csv -o results_50M/out.csv
+grep -rnw ./results_50M/ -e 'L1I LOAD' | awk '{print $1",", $4",", $8}' > results_50M/mpki.csv
+sort -k1 -n -t, results_50M/out.csv -o results_50M/mpki.csv
 
+grep -rnw ./results_50M/ -e 'CPU 0 cumulative IPC:' | awk '{print $1",", $5}' > results/ipc.csv
+sort -k1 -n -t, results_50M/out.csv -o results_50M/ipc.csv
 
 terminal-notifier -title "Terminal" -message "Done with task! Exit status: $?"
